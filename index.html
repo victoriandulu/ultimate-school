@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ultimate School of Short Courses & Defensive Driving</title>
     <style>
         * {
@@ -11,10 +11,9 @@
             box-sizing: border-box;
         }
         
-        html, body {
+        html {
             overflow-x: hidden;
             width: 100%;
-            max-width: 100%;
         }
         
         body {
@@ -22,6 +21,9 @@
             line-height: 1.6;
             color: #333;
             background: #f8f9fa;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
         
         header {
@@ -30,6 +32,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
         }
         
         nav {
@@ -149,11 +152,20 @@
         }
         
         .hero {
-            background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200') center/cover;
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #fff;
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 6rem 1.5rem;
             position: relative;
+            width: 100%;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         .hero::before {
@@ -163,7 +175,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
         
@@ -222,6 +234,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            width: 100%;
         }
         
         .section-title {
@@ -305,6 +318,7 @@
             background: linear-gradient(135deg, #2c5f2d, #234d24);
             color: #fff;
             padding: 4rem 2rem;
+            width: 100%;
         }
         
         .features-grid {
@@ -340,6 +354,7 @@
             color: #fff;
             text-align: center;
             padding: 4rem 2rem;
+            width: 100%;
         }
         
         .discount-banner h2 {
@@ -505,6 +520,7 @@
             color: #fff;
             text-align: center;
             padding: 3rem 2rem;
+            width: 100%;
         }
         
         .slogan {
@@ -514,6 +530,7 @@
             padding: 2.5rem;
             font-size: 1.6rem;
             font-weight: bold;
+            width: 100%;
         }
         
         @media (max-width: 768px) {
@@ -529,16 +546,29 @@
                 padding: 1rem;
             }
             
+            .logo {
+                font-size: 1.2rem;
+            }
+            
             .container {
                 padding: 2rem 1rem;
+                width: 100%;
             }
             
             .hero {
-                padding: 4rem 1rem;
+                padding: 3rem 1rem;
+                min-height: 400px;
+                background-size: cover;
+                background-position: center center;
+            }
+            
+            .hero::before {
+                background: rgba(0, 0, 0, 0.6);
             }
             
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                line-height: 1.3;
             }
             
             .hero p {
@@ -558,7 +588,7 @@
             }
             
             .discount-banner p {
-                font-size: 1.2rem !important;
+                font-size: 1.1rem !important;
             }
             
             .courses-grid {
@@ -599,6 +629,7 @@
             
             .contact-form {
                 padding: 2rem 1.5rem;
+                margin: 1rem;
             }
             
             .img-gallery {
@@ -615,7 +646,7 @@
             }
             
             .slogan {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 padding: 2rem 1rem;
             }
             
@@ -626,8 +657,13 @@
         }
         
         @media (max-width: 480px) {
+            .hero {
+                min-height: 350px;
+                padding: 2.5rem 0.8rem;
+            }
+            
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             
             .hero p {
@@ -642,12 +678,21 @@
                 font-size: 2rem;
             }
             
+            .discount-banner p {
+                font-size: 1rem !important;
+            }
+            
             table {
                 font-size: 0.7rem;
             }
             
             th, td {
                 padding: 0.4rem 0.2rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
             }
         }
     </style>
