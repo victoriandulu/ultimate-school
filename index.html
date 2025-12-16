@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate School of Short Courses & Defensive Driving</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5f2d;
+        }
+        
+        .logo span {
+            color: #8b2e2e;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2c5f2d;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #2c5f2d;
+            transition: 0.3s;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            z-index: 2000;
+            padding: 2rem;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #8b2e2e;
+        }
+        
+        .sidebar-links {
+            list-style: none;
+            margin-top: 3rem;
+        }
+        
+        .sidebar-links li {
+            margin: 1.5rem 0;
+        }
+        
+        .sidebar-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem;
+            border-left: 3px solid transparent;
+            transition: 0.3s;
+        }
+        
+        .sidebar-links a:hover {
+            border-left-color: #2c5f2d;
+            color: #2c5f2d;
+            padding-left: 1rem;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200') center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            font-weight: bold;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 600;
+        }
+        
+        .btn {
+            background: #8b2e2e;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background: #6d2424;
+        }
+        
+        .btn-green {
+            background: #2c5f2d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn-green:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background: #234d24;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5f2d;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #d4a574;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border-top: 5px solid #2c5f2d;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .course-card h3 {
+            color: #2c5f2d;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .course-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .course-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8b2e2e;
+            font-weight: bold;
+        }
+        
+        .price {
+            background: linear-gradient(135deg, #8b2e2e, #6d2424);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(139,46,46,0.3);
+        }
+        
+        .features-section {
+            background: linear-gradient(135deg, #2c5f2d, #234d24);
+            color: #fff;
+            padding: 4rem 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .feature-card h3 {
+            color: #d4a574;
+            margin-top: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .discount-banner {
+            background: linear-gradient(135deg, #8b2e2e, #d4a574);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .discount-banner h2 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .img-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .img-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        
+        .img-gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #2c5f2d, #234d24);
+            color: #fff;
+            padding: 1.2rem;
+            text-align: left;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .branch-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #8b2e2e;
+            transition: 0.3s;
+        }
+        
+        .branch-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        
+        .branch-card h3 {
+            color: #2c5f2d;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c5f2d;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2c5f2d;
+            box-shadow: 0 0 10px rgba(44,95,45,0.1);
+        }
+        
+        .payment-info {
+            background: linear-gradient(135deg, #d4a574, #c49563);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: 0 5px 20px rgba(212,165,116,0.3);
+        }
+        
+        .payment-info h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .payment-info ul {
+            list-style: none;
+        }
+        
+        .payment-info li {
+            padding: 0.5rem 0;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .benefits-list {
+            background: linear-gradient(135deg, #2c5f2d, #234d24);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            color: #fff;
+        }
+        
+        .benefits-list ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .benefits-list li {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #d4a574;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .slogan {
+            background: linear-gradient(135deg, #d4a574, #e6c89c);
+            color: #2d2d2d;
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .discount-banner h2 {
+                font-size: 2.5rem;
+            }
+            
+            table {
+                font-size: 0.85rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎓 ULTIMATE <span>SCHOOL</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Computer Courses</a></li>
+                <li><a href="#driving">Driving School</a></li>
+                <li><a href="#branches">Branches</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#enroll">Enroll Now</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">×</span>
+        <ul class="sidebar-links">
+            <li><a href="#home" onclick="toggleSidebar()">Home</a></li>
+            <li><a href="#courses" onclick="toggleSidebar()">Computer Courses</a></li>
+            <li><a href="#driving" onclick="toggleSidebar()">Driving School</a></li>
+            <li><a href="#branches" onclick="toggleSidebar()">Branches</a></li>
+            <li><a href="#contact" onclick="toggleSidebar()">Contact</a></li>
+            <li><a href="#enroll" onclick="toggleSidebar()">Enroll Now</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <section id="home" class="hero">
+        <h1>ULTIMATE SCHOOL OF SHORT COURSES</h1>
+        <p>🎓 Computer Training & 🚗 Defensive Driving School</p>
+        <p><strong>Okoa society kutoka na ma ajali off</strong> (Save society from accidents)</p>
+        <a href="#courses" class="btn btn-green">Computer Courses</a>
+        <a href="#driving" class="btn">Driving School</a>
+    </section>
+
+    <section id="courses" class="container">
+        <h2 class="section-title">COMPUTER SHORT COURSES</h2>
+        
+        <div class="img-gallery">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400" alt="Computer Training">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400" alt="Students Learning">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400" alt="Computer Lab">
+        </div>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <h3>BASIC LEVEL CERTIFICATE</h3>
+                <ul>
+                    <li>Introduction to Computer Science</li>
+                    <li>MS Windows, Word, Excel, Access</li>
+                    <li>MS PowerPoint & Publisher</li>
+                    <li>Typing, Internet and Email</li>
+                </ul>
+                <div class="price">@ 8,000/=</div>
+                <a href="#enroll" class="btn btn-green">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3>COMPUTER SECRETARIAL</h3>
+                <ul>
+                    <li>MS Windows & Word</li>
+                    <li>MS PowerPoint</li>
+                    <li>Typing Tutor & Shorthand</li>
+                    <li>Internet and Email</li>
+                </ul>
+                <div class="price">@ 5,000/=</div>
+                <a href="#enroll" class="btn btn-green">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3>COMPUTER ACCOUNTING</h3>
+                <ul>
+                    <li>Pastel & QuickBooks</li>
+                    <li>Sage Line</li>
+                    <li>Computer Hardware</li>
+                    <li>Internet and Email</li>
+                </ul>
+                <div class="price">@ 15,000/=</div>
+                <a href="#enroll" class="btn btn-green">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3>GRAPHICS & DESIGN</h3>
+                <ul>
+                    <li>Adobe Illustrator & CorelDraw</li>
+                    <li>Adobe Pagemaker & Photoshop</li>
+                    <li>MS Publisher</li>
+                    <li>Internet and Email</li>
+                </ul>
+                <div class="price">@ 22,000/=</div>
+                <a href="#enroll" class="btn btn-green">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3>COMPUTER PROGRAMMING</h3>
+                <ul>
+                    <li>C/C++ & Visual Basic</li>
+                    <li>MySQL & Java Programming</li>
+                    <li>Web Design</li>
+                </ul>
+                <div class="price">@ 32,000/=</div>
+                <a href="#enroll" class="btn btn-green">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3>SPSS</h3>
+                <ul>
+                    <li>Statistical Package for Social Sciences</li>
+                    <li>Chi Square, ANOVA</li>
+                    <li>Core Relation & Data Analysis</li>
+                </ul>
+                <div class="price">@ 35,000/=</div>
+                <a href="#enroll" class="btn btn-green">Enroll Now</a>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <h3>💳 PAYMENT DETAILS</h3>
+            <ul>
+                <li>✓ ALL PAYMENTS VIA PAYBILL: <strong>4188993</strong></li>
+                <li>✓ Official receipt MUST be obtained from office</li>
+                <li>✓ NO CASH PAYMENTS ALLOWED</li>
+                <li>✓ Bank: DTB Githurai</li>
+                <li>✓ Account No: 02003335001</li>
+                <li>✓ Account Name: Ultimate Driving</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title" style="color: #d4a574;">WHY LEARN WITH US</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">👨‍🏫</div>
+                    <h3>Qualified Instructors</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">✅</div>
+                    <h3>Ministry Approved</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💰</div>
+                    <h3>Discounted Rates</h3>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏰</div>
+                    <h3>Part-Time Classes</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="discount-banner">
+        <h2>🚗 30% OFF</h2>
+        <p style="font-size: 1.5rem;">DRIVING SCHOOL COURSES - LIMITED TIME OFFER!</p>
+    </div>
+
+    <section id="driving" class="container">
+        <h2 class="section-title">ULTIMATE DEFENSIVE DRIVING SCHOOL</h2>
+        
+        <div class="img-gallery">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400" alt="Driving Training">
+            <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=400" alt="Car Interior">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400" alt="Road Safety">
+        </div>
+
+        <div class="benefits-list">
+            <h3 style="color: #d4a574; margin-bottom: 1.5rem; font-size: 1.8rem;">WHY LEARN WITH US</h3>
+            <ul>
+                <li>✓ Attachment for qualified students</li>
+                <li>✓ No hidden charges</li>
+                <li>✓ Free car maintenance lessons</li>
+                <li>✓ Free first aid & mechanical lessons</li>
+                <li>✓ Free luminous & personalized training</li>
+                <li>✓ Trainable in easy installments</li>
+                <li>✓ Qualified NTSA accredited instructors</li>
+                <li>✓ Unlimited theory lessons</li>
+                <li>✓ Job placement guaranteed</li>
+                <li>✓ Discounts available</li>
+                <li>✓ Sacco & organized groups welcome (Staff, Companies, etc.)</li>
+            </ul>
+        </div>
+
+        <h3 style="text-align: center; color: #8b2e2e; margin: 3rem 0 2rem; font-size: 2rem;">DRIVING COURSES & FEES</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Age</th>
+                        <th>Hours</th>
+                        <th>Full Price</th>
+                        <th>After Discount</th>
+                        <th>Duration</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>B3</strong></td>
+                        <td>18 yrs</td>
+                        <td>42</td>
+                        <td>9,900</td>
+                        <td><strong>4,760</strong></td>
+                        <td>24 days</td>
+                        <td>Pay 5,000 to begin</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B3 (Refresher)</strong></td>
+                        <td>-</td>
+                        <td>15</td>
+                        <td>3,500</td>
+                        <td><strong>2,450</strong></td>
+                        <td>7 days</td>
+                        <td>Pay 2,000 to begin</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B3, C1</strong></td>
+                        <td>18 yrs</td>
+                        <td>63</td>
+                        <td>11,000</td>
+                        <td><strong>5,530</strong></td>
+                        <td>32 days</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B3, C1 (Refresher)</strong></td>
+                        <td>-</td>
+                        <td>15</td>
+                        <td>4,000</td>
+                        <td><strong>2,800</strong></td>
+                        <td>5 days</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer Packages</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td colspan="2"><strong>5,000</strong></td>
+                        <td>2 months</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Theory A</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td colspan="2"><strong>2,100</strong></td>
+                        <td>7 days</td>
+                        <td>Theory only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Theory B</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td colspan="2"><strong>3,000</strong></td>
+                        <td>7 days</td>
+                        <td>Theory only</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="text-align: center; color: #2c5f2d; margin: 3rem 0 2rem; font-size: 2rem;">THEORY CLASS SCHEDULE</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Class</th>
+                        <th>Time</th>
+                        <th>Days</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>B1, C, C1</td>
+                        <td>6:30 - 7:30 AM</td>
+                        <td>Mon/Fri/Sat/Sun</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>B3</td>
+                        <td>11:30 - 12:30 PM</td>
+                        <td>Mon/Fri/Sat/Sun</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>B3</td>
+                        <td>6:30 - 7:30 PM</td>
+                        <td>Mon/Fri/Sat/Sun</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>D1, D2, D3, E</td>
+                        <td>7:30 - 8:30 AM</td>
+                        <td>Mon/Fri/Sat/Sun</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="payment-info" style="margin-top: 3rem;">
+            <h3>📋 ADDITIONAL INFORMATION</h3>
+            <ul>
+                <li>✓ Theory classes include mechanical assessments at NO COST for 10 days</li>
+                <li>✓ We are available even on holidays</li>
+                <li>✓ Students may be trained in shorter hours</li>
+                <li>✓ WE OFFER MOBILE CLASSES (PICK AND DROP SERVICES)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="branches" class="container">
+        <h2 class="section-title">OUR BRANCHES</h2>
+        <div class="branches-grid">
+            <div class="branch-card">
+                <h3>📍 HEAD OFFICE</h3>
+                <p><strong>GITHURAI 44</strong></p>
+                <p>Next to Equity Bank Universal Building</p>
+                <p>📞 <strong>0723-013-017</strong></p>
+            </div>
+
+            <div class="branch-card">
+                <h3>📍 SUNTON</h3>
+                <p>Next to Awe Sakata Stage</p>
+                <p>📞 <strong>0723013017</strong></p>
+            </div>
+
+            <div class="branch-card">
+                <h3>📍 MWIKI</h3>
+                <p>Next to Bomu Defiament Men Adj</p>
+                <p>📞 <strong>0745555047</strong></p>
+            </div>
+
+            <div class="branch-card">
+                <h3>📍 GITHURAI 45</h3>
+                <p>Next to Beauty Bank</p>
+                <p>📞 <strong>0723 013 017</strong></p>
+            </div>
+
+            <div class="branch-card">
+                <h3>📍 GITHURAI 44 A</h3>
+                <p>Next to Penda Medical</p>
+                <p>📞 <strong>0746 532 270</strong></p>
+            </div>
+
+            <div class="branch-card">
+                <h3>📍 GITHURAI 44 B</h3>
+                <p>Opposite Kamburu Stage</p>
+                <p>📞 <strong>0766 232 268</strong></p>
+            </div>
+
+            <div class="branch-card">
+                <h3>📍 ZIMMERMAN</h3>
+                <p>Next to Main Stage (Base)</p>
+                <p>📞 <strong>0737 367 975</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="features-section">
+        <div class="container">
+            <h2 class="section-title" style="color: #d4a574;">CONTACT INFORMATION</h2>
+            <div style="text-align: center; color: #fff; font-size: 1.1rem;">
+                <p style="margin: 1rem 0;"><strong>📞 Phone:</strong> 0723-013-017 | 0723-013-017</p>
+                <p style="margin: 1rem 0;"><strong>📧 Email:</strong> ultimatedefensivedriving55@gmail.com</p>
+                <p style="margin: 1rem 0;"><strong>🌐 Website:</strong> ultimatedrivingcollege55@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="enroll" class="container">
+        <h2 class="section-title">ENROLL TODAY</h2>
+        <div class="contact-form">
+            <form id="enrollForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" required placeholder="07XX XXX XXX">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Course *</label>
+                    <select required>
+                        <option value="">-- Choose a course --</option>
+                        <option value="basic">Basic Level Certificate (8,000)</option>
+                        <option value="secretarial">Computer Secretarial (5,000)</option>
+                        <option value="accounting">Computer Accounting (15,000)</option>
+                        <option value="graphics">Graphics & Design (22,000)</option>
+                        <option value="programming">Computer Programming (32,000)</option>
+                        <option value="spss">SPSS (35,000)</option>
+                        <option value="b3">B3 Driving Course (4,760)</option>
+                        <option value="b3-refresher">B3 Refresher (2,450)</option>
+                        <option value="b3c1">B3, C1 (5,530)</option>
+                        <option value="theory">Theory Classes</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Branch *</label>
+                    <select required>
+                        <option value="">-- Select branch --</option>
+                        <option value="githurai44">Githurai 44 (Head Office)</option>
+                        <option value="sunton">Sunton</option>
+                        <option value="mwiki">Mwiki</option>
+                        <option value="githurai45">Githurai 45</option>
+                        <option value="githurai44a">Githurai 44 A</option>
+                        <option value="githurai44b">Githurai 44 B</option>
+                        <option value="zimmerman">Zimmerman</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Any additional information..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-green" style="width: 100%;">Submit Enrollment</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="slogan">
+        <p>Jilinde Unilinde!! 🛡️ Road safety is a shared responsibility</p>
+    </div>
+
+    <footer>
+        <p style="font-size: 1.3rem; margin-bottom: 1rem;">🎓 ULTIMATE SCHOOL OF SHORT COURSES & DEFENSIVE DRIVING</p>
+        <p>Ministry of Education Approved | NTSA Accredited</p>
+        <p style="margin-top: 1.5rem;">📍 Head Office: Githurai 44, Next to Equity Bank Universal Building</p>
+        <p>📞 0723-013-017 | 📧 ultimatedefensivedriving55@gmail.com</p>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">&copy; 2024 Ultimate School. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        document.getElementById('enrollForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you shortly via phone or email to complete your enrollment.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
