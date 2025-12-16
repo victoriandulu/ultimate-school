@@ -38,11 +38,11 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #006600;
+            color: #2c5f2d;
         }
         
         .logo span {
-            color: #CC0000;
+            color: #8b2e2e;
         }
         
         .nav-links {
@@ -59,7 +59,7 @@
         }
         
         .nav-links a:hover {
-            color: #006600;
+            color: #2c5f2d;
         }
         
         .hamburger {
@@ -72,7 +72,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #006600;
+            background: #2c5f2d;
             transition: 0.3s;
         }
         
@@ -99,7 +99,7 @@
             right: 1rem;
             font-size: 2rem;
             cursor: pointer;
-            color: #CC0000;
+            color: #8b2e2e;
         }
         
         .sidebar-links {
@@ -122,8 +122,8 @@
         }
         
         .sidebar-links a:hover {
-            border-left-color: #006600;
-            color: #006600;
+            border-left-color: #2c5f2d;
+            color: #2c5f2d;
             padding-left: 1rem;
         }
         
@@ -143,25 +143,45 @@
         }
         
         .hero {
-            background: linear-gradient(135deg, rgba(0,102,0,0.9), rgba(204,0,0,0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200') center/cover;
+            background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200') center/cover;
             color: #fff;
             text-align: center;
             padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero > * {
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            font-weight: bold;
         }
         
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 600;
         }
         
         .btn {
-            background: #CC0000;
+            background: #8b2e2e;
             color: #fff;
             padding: 1rem 2.5rem;
             text-decoration: none;
@@ -173,21 +193,23 @@
             font-size: 1rem;
             margin: 0.5rem;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(204,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(204,0,0,0.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background: #6d2424;
         }
         
         .btn-green {
-            background: #006600;
-            box-shadow: 0 4px 15px rgba(0,102,0,0.3);
+            background: #2c5f2d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         
         .btn-green:hover {
-            box-shadow: 0 6px 20px rgba(0,102,0,0.4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background: #234d24;
         }
         
         .container {
@@ -200,7 +222,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #006600;
+            color: #2c5f2d;
             position: relative;
             padding-bottom: 1rem;
         }
@@ -213,7 +235,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: #FFA500;
+            background: #d4a574;
         }
         
         .courses-grid {
@@ -228,7 +250,7 @@
             padding: 2rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: 0.3s;
-            border-top: 5px solid #006600;
+            border-top: 5px solid #2c5f2d;
         }
         
         .course-card:hover {
@@ -237,7 +259,7 @@
         }
         
         .course-card h3 {
-            color: #006600;
+            color: #2c5f2d;
             margin-bottom: 1.5rem;
             font-size: 1.4rem;
         }
@@ -257,12 +279,12 @@
             content: "✓";
             position: absolute;
             left: 0;
-            color: #CC0000;
+            color: #8b2e2e;
             font-weight: bold;
         }
         
         .price {
-            background: linear-gradient(135deg, #CC0000, #990000);
+            background: linear-gradient(135deg, #8b2e2e, #6d2424);
             color: #fff;
             padding: 1rem;
             border-radius: 50px;
@@ -270,11 +292,11 @@
             font-weight: bold;
             text-align: center;
             margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(204,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(139,46,46,0.3);
         }
         
         .features-section {
-            background: linear-gradient(135deg, #006600, #004400);
+            background: linear-gradient(135deg, #2c5f2d, #234d24);
             color: #fff;
             padding: 4rem 2rem;
         }
@@ -297,7 +319,7 @@
         }
         
         .feature-card h3 {
-            color: #FFA500;
+            color: #d4a574;
             margin-top: 1rem;
             font-size: 1.3rem;
         }
@@ -308,7 +330,7 @@
         }
         
         .discount-banner {
-            background: linear-gradient(135deg, #CC0000, #FFA500);
+            background: linear-gradient(135deg, #8b2e2e, #d4a574);
             color: #fff;
             text-align: center;
             padding: 4rem 2rem;
@@ -351,7 +373,7 @@
         }
         
         th {
-            background: linear-gradient(135deg, #006600, #004400);
+            background: linear-gradient(135deg, #2c5f2d, #234d24);
             color: #fff;
             padding: 1.2rem;
             text-align: left;
@@ -377,7 +399,7 @@
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-left: 5px solid #CC0000;
+            border-left: 5px solid #8b2e2e;
             transition: 0.3s;
         }
         
@@ -387,7 +409,7 @@
         }
         
         .branch-card h3 {
-            color: #006600;
+            color: #2c5f2d;
             margin-bottom: 1rem;
         }
         
@@ -408,7 +430,7 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #006600;
+            color: #2c5f2d;
         }
         
         input, select, textarea {
@@ -422,16 +444,16 @@
         
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #006600;
-            box-shadow: 0 0 10px rgba(0,102,0,0.1);
+            border-color: #2c5f2d;
+            box-shadow: 0 0 10px rgba(44,95,45,0.1);
         }
         
         .payment-info {
-            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            background: linear-gradient(135deg, #d4a574, #c49563);
             padding: 2.5rem;
             border-radius: 15px;
             margin: 3rem 0;
-            box-shadow: 0 5px 20px rgba(255,165,0,0.3);
+            box-shadow: 0 5px 20px rgba(212,165,116,0.3);
         }
         
         .payment-info h3 {
@@ -451,7 +473,7 @@
         }
         
         .benefits-list {
-            background: linear-gradient(135deg, #006600, #004400);
+            background: linear-gradient(135deg, #2c5f2d, #234d24);
             padding: 3rem;
             border-radius: 15px;
             margin: 2rem 0;
@@ -469,7 +491,7 @@
             background: rgba(255,255,255,0.1);
             padding: 1rem;
             border-radius: 10px;
-            border-left: 4px solid #FFA500;
+            border-left: 4px solid #d4a574;
         }
         
         footer {
@@ -480,8 +502,8 @@
         }
         
         .slogan {
-            background: linear-gradient(135deg, #FFA500, #FFD700);
-            color: #000;
+            background: linear-gradient(135deg, #d4a574, #e6c89c);
+            color: #2d2d2d;
             text-align: center;
             padding: 2.5rem;
             font-size: 1.6rem;
@@ -652,7 +674,7 @@
 
     <section class="features-section">
         <div class="container">
-            <h2 class="section-title" style="color: #FFA500;">WHY LEARN WITH US</h2>
+            <h2 class="section-title" style="color: #d4a574;">WHY LEARN WITH US</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="icon">👨‍🏫</div>
@@ -689,7 +711,7 @@
         </div>
 
         <div class="benefits-list">
-            <h3 style="color: #FFA500; margin-bottom: 1.5rem; font-size: 1.8rem;">WHY LEARN WITH US</h3>
+            <h3 style="color: #d4a574; margin-bottom: 1.5rem; font-size: 1.8rem;">WHY LEARN WITH US</h3>
             <ul>
                 <li>✓ Attachment for qualified students</li>
                 <li>✓ No hidden charges</li>
@@ -705,7 +727,7 @@
             </ul>
         </div>
 
-        <h3 style="text-align: center; color: #CC0000; margin: 3rem 0 2rem; font-size: 2rem;">DRIVING COURSES & FEES</h3>
+        <h3 style="text-align: center; color: #8b2e2e; margin: 3rem 0 2rem; font-size: 2rem;">DRIVING COURSES & FEES</h3>
         <div style="overflow-x: auto;">
             <table>
                 <thead>
@@ -784,7 +806,7 @@
             </table>
         </div>
 
-        <h3 style="text-align: center; color: #006600; margin: 3rem 0 2rem; font-size: 2rem;">THEORY CLASS SCHEDULE</h3>
+        <h3 style="text-align: center; color: #2c5f2d; margin: 3rem 0 2rem; font-size: 2rem;">THEORY CLASS SCHEDULE</h3>
         <div style="overflow-x: auto;">
             <table>
                 <thead>
@@ -885,7 +907,7 @@
 
     <section id="contact" class="features-section">
         <div class="container">
-            <h2 class="section-title" style="color: #FFA500;">CONTACT INFORMATION</h2>
+            <h2 class="section-title" style="color: #d4a574;">CONTACT INFORMATION</h2>
             <div style="text-align: center; color: #fff; font-size: 1.1rem;">
                 <p style="margin: 1rem 0;"><strong>📞 Phone:</strong> 0723-013-017 | 0723-013-017</p>
                 <p style="margin: 1rem 0;"><strong>📧 Email:</strong> ultimatedefensivedriving55@gmail.com</p>
