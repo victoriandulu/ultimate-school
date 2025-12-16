@@ -11,6 +11,12 @@
             box-sizing: border-box;
         }
         
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -519,20 +525,129 @@
                 display: flex;
             }
             
+            nav {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .discount-banner {
+                padding: 3rem 1rem;
             }
             
             .discount-banner h2 {
                 font-size: 2.5rem;
             }
             
+            .discount-banner p {
+                font-size: 1.2rem !important;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .course-card {
+                padding: 1.5rem;
+            }
+            
+            .price {
+                font-size: 1.4rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .features-grid, .branches-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .benefits-list {
+                padding: 2rem 1rem;
+            }
+            
+            .benefits-list ul {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-info {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .img-gallery {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
             table {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
             
             th, td {
-                padding: 0.5rem;
+                padding: 0.5rem 0.3rem;
+            }
+            
+            .slogan {
+                font-size: 1.2rem;
+                padding: 2rem 1rem;
+            }
+            
+            footer {
+                padding: 2rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .discount-banner h2 {
+                font-size: 2rem;
+            }
+            
+            table {
+                font-size: 0.7rem;
+            }
+            
+            th, td {
+                padding: 0.4rem 0.2rem;
             }
         }
     </style>
